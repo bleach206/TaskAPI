@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskAPI</name>
+    </assembly>
+    <members>
+        <member name="T:TaskAPI.Controllers.TaskController">
+            <summary>
+            Task api doing the small things in life that adds up
+            </summary>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.#ctor(Service.Interface.ITaskService,Microsoft.Extensions.Logging.ILogger{TaskAPI.Controllers.TaskController},Common.Interface.IETagCache)">
+            <summary>
+            task constructor
+            </summary>
+            <param name="service"></param>
+            <param name="logger"></param>
+            <param name="cache"></param>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.Get(System.Int32,System.Int32)">
+            <summary>
+            return the specified task
+            </summary>
+            <remarks>Parameters</remarks>   
+            <param name="id">User Id</param>
+            <param name="taskId">The unique identifier of task</param>
+            <response code="200">successful operation</response>
+            <response code="304">Not Modified</response>
+            <response code="400">Invalid id supplied</response>
+            <response code="404">List not found</response>
+            <response code="500">server error</response>
+            <returns>Response code and dto object</returns>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.Get(System.Int32,Model.GetTasksDTO)">
+            <summary>
+            returns all of the available task for a single to do
+            </summary>
+            <remarks>Gets a list of user tasks. <br />  id: user id. <br />  toDoId: to do id. <br /> skip: number of records to skip for pagination. (default is 1) <br/>  limit: the maximum number of records to return (Max is 50 default to 50) </remarks>
+            <param name="id">user Id</param>
+            <param name="getTasksDTO">query paramter DTO</param>       
+            <response code="200">successful operation</response>
+            <response code="304">Not Modified</response>
+            <response code="400">Invalid input</response>
+            <response code="404">List not found</response>
+            <response code="500">server error</response>
+            <returns>Response code and dto object</returns>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.Create(System.Int32,Model.CreateDTO)">
+            <summary>
+            creates a task
+            </summary>
+            <remarks>Adds a to do into the system</remarks>
+            <param name="id">User Id</param>
+            <param name="task">task to add</param>
+            <response code="201">item created</response>
+            <response code="400">invalid input, object invalid</response>
+            <response code="409">an existing item already exists</response>
+            <response code="500">server error</response>
+            <returns>Response code and dto object</returns>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.CreateList(System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Model.CreateTasksDTO})">
+            <summary>
+            creates a task list
+            </summary>
+            <remarks>Adds a to do list into the system</remarks>
+            <param name="id">User Id</param>
+            <param name="toDoId">To do lists</param>
+            <param name="tasks">To do lists</param>
+            <response code="201">item created</response>
+            <response code="400">invalid input, object invalid</response>
+            <response code="409">an existing item already exists</response>
+            <response code="500">server error</response>
+            <returns>Response code and dto object</returns>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.PutUpdateName(System.Int32,Model.UpdateNameDTO)">
+            <summary>
+            Update to do Name
+            </summary>
+            <remarks>update to do name</remarks>
+            <param name="id">To do id</param>
+            <param name="updateNameDTO"> dto holding name and user id</param>        
+            <response code="204">to do updated</response>
+            <response code="400">invalid input, object invalid</response>
+            <response code="404">Resource not found</response>
+            <response code="500">server error</response>
+            <returns>no content</returns>
+        </member>
+        <member name="M:TaskAPI.Controllers.TaskController.PutUpdateCompleted(System.Int32,Model.UpdateIsCompletedDTO)">
+            <summary>
+            Update to do IsCompleted
+            </summary>
+            <remarks>update to do name</remarks>
+            <param name="id">To do id</param>
+            <param name="updateIsCompletedDTO"> dto holding is completed and user id</param>        
+            <response code="204">to do updated</response>
+            <response code="400">invalid input, object invalid</response>
+            <response code="404">Resource not found</response>
+            <response code="500">server error</response>
+            <returns>no content</returns>
+        </member>
+        <member name="T:TaskAPI.Program">
+            <summary>
+            main class program web host
+            </summary>
+        </member>
+        <member name="M:TaskAPI.Program.Main(System.String[])">
+            <summary>
+            main for console
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:TaskAPI.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            middle ware
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskAPI.Startup">
+            <summary>
+            use to be gobal middleware pipeline
+            </summary>
+        </member>
+        <member name="P:TaskAPI.Startup.Configuration">
+            <summary>
+            configuration
+            </summary>
+        </member>
+        <member name="M:TaskAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:TaskAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:TaskAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:TaskAPI.Startup.ConfigureIOC(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            setup IOC
+            </summary>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>
