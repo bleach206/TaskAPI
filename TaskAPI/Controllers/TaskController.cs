@@ -54,7 +54,7 @@ namespace TaskAPI.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        [HttpGet("{taskId}/user/{id}/task", Name = "Get")]
+        [HttpGet("{taskId}/users/{id}/tasks", Name = "Get")]
         public async Task<IActionResult> Get(int id, int taskId)
         {
             try
@@ -99,7 +99,7 @@ namespace TaskAPI.Controllers
         /// <response code="404">List not found</response>
         /// <response code="500">server error</response>
         /// <returns>Response code and dto object</returns>
-        [HttpGet("user/{id}/tasks")]
+        [HttpGet("users/{id}/tasks")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<TaskDTO>))]
         [ProducesResponseType(304)]
         [ProducesResponseType(400)]
@@ -149,7 +149,7 @@ namespace TaskAPI.Controllers
         /// <response code="409">an existing item already exists</response>
         /// <response code="500">server error</response>
         /// <returns>Response code and dto object</returns>
-        [HttpPost("user/{id}/task")]
+        [HttpPost("users/{id}/tasks")]
         [ProducesResponseType(201, Type = typeof(CreateDTO))]
         [ProducesResponseType(400)]
         [ProducesResponseType(409)]
@@ -187,7 +187,7 @@ namespace TaskAPI.Controllers
         /// <response code="409">an existing item already exists</response>
         /// <response code="500">server error</response>
         /// <returns>Response code and dto object</returns>
-        [HttpPost("user/{id}/tasks/{toDoId}")]
+        [HttpPost("users/{id}/tasks/{toDoId}")]
         [ProducesResponseType(201, Type = typeof(IEnumerable<CreateDTO>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(409)]
@@ -224,7 +224,7 @@ namespace TaskAPI.Controllers
         /// <response code="404">Resource not found</response>
         /// <response code="500">server error</response>
         /// <returns>no content</returns>
-        [HttpPut("task/update/name/{id}/")]
+        [HttpPut("update/name/{id}/")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -261,7 +261,7 @@ namespace TaskAPI.Controllers
         /// <response code="404">Resource not found</response>
         /// <response code="500">server error</response>
         /// <returns>no content</returns>
-        [HttpPut("task/update/completed/{id}/")]
+        [HttpPut("update/completed/{id}/")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
